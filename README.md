@@ -1,2 +1,6 @@
 # LC3-Assembler
-Parse mnemonics to binary encoding
+
+## Basis
+
+Objective: Parsing mnemonics into binary encoding
+Restraints: Using LC3 Assembly as a basis for OPCODE and table_data
