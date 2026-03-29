@@ -13,8 +13,8 @@ void parse_source_file(const char *filename) {
   // declare buffer
   char line[256];
   while (fgets(line, sizeof(line), file_pointer) != NULL) {
-    int len = sizeof(line);
     int out_line = 0;
+    int last_space = 0;
     int i = 0; // tracks the index within the line
 
     while (line[i] == ' ' || line[i] == '\t') {
@@ -24,24 +24,30 @@ void parse_source_file(const char *filename) {
     if (line[i] == '\0' || line[i] == ';') {
       continue;
     }
+    while (line[i] != '\0' && line[i] != ';') {
 
-    for (int i = 0; line[i] != '\0';
-         i++) { // semicolon dictates if an entire line is done (with a comment
-                // it ends immediately)
-      if (line[i] == ';') {
-        break;
-      } // ignores EMBEDED tabs (forgor how to spell)
-      if (line[i] != '\t') {
-        if (i > 0) {
-          if (line[i - 1] == ' ' && line[i] == ' ') {
-            continue;
-          }
+      if (line[i] == '\t') {
+        i++;
+        continue;
+      }
+
+      if (line[i] == ' ') {
+        if (last_space) {
+          i++;
+          continue;
         }
+        last_space = 1;
         printf("%c", line[i]);
         out_line = 1;
+        i++;
+      } else {
+        last_space = 0;
+        printf("%c", line[i]);
+        out_line = 1;
+        i++;
       }
     }
-    if (out_line) {
+    if (out_line == 1) {
       putchar('\n');
     }
   }

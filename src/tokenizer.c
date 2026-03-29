@@ -7,6 +7,6 @@ void tokenize_line() {
   if ()
 }
 
-split tokens 5. classify and assign to struct fields 6. return filled object
+//split tokens 5. classify and assign to struct fields 6. return filled object
 
     char opcodes[] = {"NOT", "AND", "ADD", "LD", "LDI", ""}
