@@ -1,12 +1,20 @@
 
 
-void tokenize_line() {
+void tokenize_line(char formatted[]) {
+  char token[10][50];
+  int i = 0;
+  int token_counter = 0;
 
-  // java version:	string[] i = string.split(',');
-
-  if ()
+  while (formatted[i] == ' ' || formatted[i] == ',') {
+    i++;
+  }
+  if (formatted[i] == '\0') {
+    return;
+  }
+  int k = 0;
+  while (formatted[i] != ' ' && formatted[i] != ',' && formatted[i] != '\0') {
+    token[token_counter][k] = formatted[i];
+    k++;
+    i++;
+  }
 }
-
-//split tokens 5. classify and assign to struct fields 6. return filled object
-
-    char opcodes[] = {"NOT", "AND", "ADD", "LD", "LDI", ""}
