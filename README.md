@@ -7,6 +7,4 @@ Restraints: Using LC3 Assembly as a basis for OPCODE and table_data
 
 ## Current progress
 
-Working on Parser file for tokenizer to use later (when implimented)
-
-- still printing out spaces between lines (default gcc or bug)
+finished rough tokenization
