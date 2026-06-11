@@ -77,7 +77,15 @@ int is_directive(char* a) {
   return 0;
 }
 
-struct Token_Line classify_line(struct Token_Line a){
+int is_valid_label(char* a) {
+  if (a[0] == "\0") {
+    return 0;
+  }
+  if ()
+
+}
+
+struct Token_Line classify_line(struct Token_Line a) {
   if (a.overflow_flag) {
     return a;
   }
@@ -100,6 +108,11 @@ struct Token_Line classify_line(struct Token_Line a){
     }
     return a;
   } else {
+
+    if (!is_valid_label(a.tokens[0])) {
+      a.classification[0] = INVALID;
+      return a;
+    }
     a.classification[0] = LABEL;
    if (a.token_count < 2) {               // if index 0 then another token is required
       a.classification[0] = INVALID;
@@ -118,7 +131,6 @@ struct Token_Line classify_line(struct Token_Line a){
       return a;
     } else {
       a.classification[0] = INVALID;
-      a.classification[1] = INVALID;
       return a;
     }
   }
